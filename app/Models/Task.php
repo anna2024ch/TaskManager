@@ -9,6 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
+    // was darf befuellt werden
     protected $fillable = [
         'title',
         'description',
@@ -20,14 +21,15 @@ class Task extends Model
         'created_by'
     ];
 
+    // wie haengt einer task mit andere sachen zusammen
     public function project()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class); // tasks gehoeren fur einer projekt
     }
 
     public function assignedUser()
     {
-        return $this->belongsTo(User::class, 'assigned_to');
+        return $this->belongsTo(User::class, 'assigned_to');  // task gehoert zu einem user 
     }
 
     public function creator()

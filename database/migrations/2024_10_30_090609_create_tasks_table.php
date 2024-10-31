@@ -8,11 +8,16 @@ class CreateProjectsTable extends Migration
 {
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->text('description')->nullable();
-            $table->enum('status', ['aktiv', 'abgeschlossen', 'pausiert']);
+            $table->enum('status', ['neu', 'in_bearbeitung', 'abgeschlossen']);
+            $table->enum('priority', ['hoch', 'mittel', 'niedrig']);
+            $table->date('due_date');
+            $table->foreignId('project_id')->constrained()->onDelete('cascade');
+            $table->foreignId('assigned_to')->constrained('users');
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
         });
     }
