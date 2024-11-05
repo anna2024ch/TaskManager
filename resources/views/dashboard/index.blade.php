@@ -15,7 +15,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <h4 class="font-bold text-blue-700">Offene Aufgaben</h4>
-                                    {{-- <p class="text-2xl text-blue-900">{{ $openTasksCount }}</p> --}}
+                                    <p class="text-2xl text-blue-900">{{ $openTasksCount }}</p>
                                 </div>
                                 <div class="text-3xl text-blue-500">
                                     📋
@@ -28,7 +28,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <h4 class="font-bold text-green-700">Aktive Projekte</h4>
-                                    {{-- <p class="text-2xl text-green-900">{{ $activeProjectsCount }}</p> --}}
+                                    <p class="text-2xl text-green-900">{{ $activeProjectsCount }}</p>
                                 </div>
                                 <div class="text-3xl text-green-500">
                                     📊
@@ -41,7 +41,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <h4 class="font-bold text-yellow-700">Fällige Aufgaben</h4>
-                                    {{-- <p class="text-2xl text-yellow-900">{{ $overdueTasksCount }}</p> --}}
+                                    <p class="text-2xl text-yellow-900">{{ $overdueTasksCount }}</p>
                                 </div>
                                 <div class="text-3xl text-yellow-500">
                                     ⚠️

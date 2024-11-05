@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 // Welcome page route
@@ -10,10 +11,7 @@ Route::get('/', function () {
 
 // Dashboard and main feature routes
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Update the dashboard view path to match our structure
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');  // Changed from just 'dashboard' to 'dashboard.index'
-    })->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     // Add project routes
     Route::get('/projects', function () {
