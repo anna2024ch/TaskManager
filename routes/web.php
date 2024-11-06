@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 // Welcome page route
@@ -13,15 +15,9 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    // Add project routes
-    Route::get('/projects', function () {
-        return view('projects.index');
-    })->name('projects.index');
-
-    // Add task routes
-    Route::get('/tasks', function () {
-        return view('tasks.index');
-    })->name('tasks.index');
+    // These resource routes include all CRUD operations including index
+    Route::resource('projects', ProjectController::class);
+    Route::resource('tasks', TaskController::class);
 });
 
 // Profile routes

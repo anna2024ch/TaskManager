@@ -9,7 +9,11 @@ class Task extends Model
 {
     use HasFactory;
 
-    // was darf befuellt werden
+    // Add this line to cast due_date to datetime
+    protected $casts = [
+        'due_date' => 'datetime'
+    ];
+
     protected $fillable = [
         'title',
         'description',
@@ -21,15 +25,14 @@ class Task extends Model
         'created_by'
     ];
 
-    // wie haengt einer task mit andere sachen zusammen
     public function project()
     {
-        return $this->belongsTo(Project::class); // tasks gehoeren fur einer projekt
+        return $this->belongsTo(Project::class);
     }
 
     public function assignedUser()
     {
-        return $this->belongsTo(User::class, 'assigned_to');  // task gehoert zu einem user 
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 
     public function creator()
