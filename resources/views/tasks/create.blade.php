@@ -10,20 +10,21 @@
 <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-            <div class="p-6 bg=white border-b border-grau-200">
-                <form>
-                    <h1> @csrf </h1>
+            <div class="p-6 bg-white border-b border-gray-200">
+
+                <form method="POST" action="{{ route('tasks.store')}}">
+                     @csrf
 
                     <div class="mb-4">
-                        <label for="derscription" class="block text-sm font-medium text-gray-700">Title</label>
+                        <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
                         <input type="text" name="title" id="title"
                             class="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
                             required>
                      </div>
 
                      <div class="mb-4">
-                        <label for="derscription" class="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea type="text" name="derscription" id="derscription" rows="3"
+                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea type="text" name="description" id="description" rows="3"
                             class="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
                             required></textarea>
                     </div>
@@ -36,7 +37,6 @@
                             required>
                         @foreach ($projects as $project )
                             <option value="{{ $project->id }}">{{ $project->name }} </option>
-
                         @endforeach
 
                         </select>
@@ -60,7 +60,7 @@
                         class="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
                         required>
                         <option value="niedrig">Niedrig</option>
-                        <option value="mittiel">Mittiel</option>
+                        <option value="mittel">Mittel</option>
                         <option value="hoch">Hoch</option>
 
                     </select>

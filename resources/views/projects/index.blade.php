@@ -12,6 +12,12 @@
         </div>
     </x-slot>
 
+    @if(session('success'))
+    <div class="alert alert-success text-center bg-green-100 text-green-800 p-4 rounded-lg mt-4 max-w-lg mx-auto">
+        {{ session('success') }}
+    </div>
+@endif
+
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
@@ -24,6 +30,8 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aufgaben
                                 </th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aktionen
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Delete
                                 </th>
                             </tr>
                         </thead>
@@ -38,11 +46,21 @@
                                             {{ $project->status }}
                                         </span>
                                     </td>
+
                                     <td class="px-6 py-4">{{ $project->tasks_count }}</td>
+
                                     <td class="px-6 py-4">
                                         <a href="{{ route('projects.edit', $project) }}"
                                             class="text-blue-600 hover:text-blue-900">Bearbeiten</a>
+
+                                    <td class="px-6 py-4">
+                                        <form action="{{ route('projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Sind Sie sicher, dass Sie das Project löschen möchten?');">
+                                            @csrf
+                                            @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900">Löschen</button>
+                                        </form>
                                     </td>
+
                                 </tr>
                             @endforeach
                         </tbody>

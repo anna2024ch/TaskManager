@@ -17,7 +17,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // These resource routes include all CRUD operations including index
     Route::resource('projects', ProjectController::class);
+
     Route::resource('tasks', TaskController::class);
+
 });
 
 // Profile routes
